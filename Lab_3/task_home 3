@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+
+int main(void) {
+    //Set(
+    char st1[1000], st2[1000];
+    char *p1 = st1, *p2 = st2;
+    scanf("%s", st1);
+    for (int i = 0; i < 1000; i++){
+        *p2 = *p1;
+        p1++;
+        p2++;
+    }
+    printf("%s\n", st2);
+    return 0;
+}
