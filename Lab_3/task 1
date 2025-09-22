@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    int fact[10] = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
+    int st, kon;
+    scanf("%d", &st);
+    scanf("%d", &kon);
+    printf("The strong numbers are: ");
+    int sm, k;
+    for (int i = st; i <= kon; i++){
+        sm = 0;
+        k = i;
+        while (k > 0){
+            sm += fact[k % 10];
+            k = k / 10;
+        }
+        if (sm == i) {
+            printf("%d, ", i);
+        }
+    }
+    return 0;
+}
