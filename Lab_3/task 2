@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char s[50];
+    int sp[27];
+    scanf("%[^\n]", s); //[^\n] find in internet
+    for (int i = 0; i < 27; i++){
+        sp[i] = 0;
+    }
+    for (int i = 0; i < strlen(s); i++){
+        sp[(int)s[i] - 97]++;
+    }
+    for (int k = 50; k > 0; k--){
+        for (int i = 0; i < 27; i++){
+            if (sp[i] == k){
+                printf("%c ", (char)(i + 97));
+                for (int j = 0; j < k; j++){
+                    printf(".");
+                }
+                printf("\n");
+            }
+        }
+    }
+    return 0;
+}
