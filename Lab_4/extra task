@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <string.h>
+#define mx 100
+#define ull unsigned long long int
+
+
+struct A{
+    char c[10][50];
+    int n;
+};
+
+
+struct book{
+    char name[50];
+    struct A rec;
+};
+
+
+struct A get(int m){
+    struct A s;
+    s.n = m;
+    for (int i = 0; i < m; i++){
+        printf("Write %ds ingredient\n", i + 1);
+        scanf("%s", s.c[i]);
+    }
+    return s;
+}
+
+
+void find(char nm[50], struct book bk[mx], int n){
+    for (int i = 0; i < n; i++){
+        if (strcmp(bk[i].name, nm) == 0){
+            printf("Recipes:\n");
+            for (int j = 0; j < bk[i].rec.n; j++){
+                printf("%s ", bk[i].rec.c[j]);
+            }
+            printf("\n");
+            return;
+        }
+    }
+    printf("Do not find your recipes\n");
+}
+
+
+int main(void) {
+    struct book cookbook[mx];
+    
+    int n;
+    printf("How many recipes you want add?\n");
+    scanf("%d", &n);
+    
+    int m;
+    struct A sp;
+    char q[50];
+    
+    for (int i = 0; i < n; i++){
+        struct A sp;
+        printf("Write name recipes\n");
+        scanf("%s", cookbook[i].name);
+        printf("How many ingredients recipes have?\n");
+        scanf("%d", &m);
+        sp = get(m);
+        cookbook[i].rec = sp;
+    }
+    
+    char nm[50];
+    printf("Write name recipes, which you want to find\n");
+    scanf("%s", nm);
+    
+    find(nm, cookbook, n);
+}
