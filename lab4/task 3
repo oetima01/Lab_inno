@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+#define mx 100
+#define ull unsigned long long int
+
+
+
+union A{
+    ull a;
+    unsigned char c[sizeof(ull)];
+};
+
+
+void swap(unsigned char *a, unsigned char *b){
+    unsigned char temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+
+ull encryption(ull n){
+    union A s;
+    s.a = n;
+    for (int i = 0; i < sizeof(ull); i += 2){
+        unsigned char *ap = &s.c[i], *bp = &s.c[i + 1];
+        swap(ap, bp);
+    }
+    return s.a;
+}
+
+
+int main(void) {
+    int n;
+    scanf("%llu", &n);
+    printf("%llu", encryption(n));
+    return 0;
+}
