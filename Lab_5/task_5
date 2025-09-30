@@ -1,0 +1,120 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define mx 1005
+#define ll long long int
+
+
+enum role {
+    Student,
+    TA,
+    Professor
+};
+
+
+enum role str_to_role(const char* str) {
+    if (strcmp(str, "Student") == 0) return Student;
+    else if (strcmp(str, "TA") == 0) return TA;
+    else if (strcmp(str, "Professor") == 0) return Professor;
+    else return -1;
+}
+
+
+void role_to_char(enum role a) {
+    switch (a) {
+        case Student:
+            printf("role: Student\n");
+            return;
+        case TA:
+            printf("role: TA\n");
+            return;
+        case Professor:
+            printf("role: Professor\n");
+            return;
+    }
+}
+
+
+enum degree {
+    Secondary,
+    Bachelor,
+    Master,
+    PhD
+};
+
+
+enum degree str_to_degree(const char* str) {
+    if (strcmp(str, "Secondary") == 0) return Secondary;
+    else if (strcmp(str, "Bachelor") == 0) return Bachelor;
+    else if (strcmp(str, "Master") == 0) return Master;
+    else if (strcmp(str, "PhD") == 0) return PhD;
+    else return -1;
+}
+
+
+void degree_to_char(enum degree a) {
+    switch (a) {
+        case Secondary:
+            printf("degree: Secondary\n");
+            return;
+        case Bachelor:
+            printf("degree: Bachelor\n");
+            return;
+        case Master:
+            printf("degree: Master\n");
+            return;
+        case PhD:
+            printf("degree: PhD\n");
+            return;
+    }
+}
+
+
+struct account{
+    char name[50];
+    enum role a;
+    enum degree b;
+};
+
+
+int cmp(const void *p1, const void *p2) {
+    struct account *a = (struct account *)p1;
+    struct account *b = (struct account *)p2;
+
+    if (a->a > b->a) return -1;
+    if (a->a < b->a) return 1;
+
+    if (a->b > b->b) return -1;
+    if (a->b < b->b) return 1;
+
+    return strcmp(a->name, b->name);
+}
+
+
+int main(void){
+    int n;
+    struct account sp[mx];
+    printf("How many people in moodle?\n");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++){
+        char nm[50];
+        char a[50], b[50];
+        printf("Write down name\n");
+        scanf("%s", nm);
+        printf("role\n");
+        scanf("%s", a);
+        printf("degree\n");
+        scanf("%s", b);
+        strcpy(sp[i].name, nm);
+        sp[i].a = str_to_role(a);
+        sp[i].b = str_to_degree(b);
+    }
+    qsort(sp, n, sizeof(struct account), cmp);
+    for (int i = 0; i < n; i++){
+        printf("%d) Name: %s\n", (i + 1), sp[i].name);
+        role_to_char(sp[i].a);
+        degree_to_char(sp[i].b);
+    }
+    return 0;
+}
+
