@@ -1,0 +1,11 @@
+package Lab6;
+import java.util.Scanner;
+
+public class Main{
+    public static void main (String args[]) throws InterruptedException {
+        long st = System.nanoTime();
+        Thread.sleep(10);
+        long end = System.nanoTime();
+        System.out.println("Difference is: " + (end - st));
+    }
+}
