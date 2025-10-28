@@ -1,0 +1,18 @@
+package Lab6;
+import java.util.Scanner;
+
+public class Main{
+    public static void main (String args[]){
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter your first line: ");
+        String s1 = scan.nextLine();
+        System.out.print("Enter your second line: ");
+        String s2 = scan.nextLine();
+        if (s1.equals(s2)){
+            System.out.println("True");
+        }
+        else {
+            System.out.println("False");
+        }
+    }
+}
