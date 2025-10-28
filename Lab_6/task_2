@@ -1,0 +1,12 @@
+package Lab6;
+import java.util.Scanner;
+
+public class Main{
+    public static void main (String args[]){
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter your char: ");
+        char c = scan.next().charAt(0);
+        System.out.print("ASCII value of a character: ");
+        System.out.println((int) c);
+    }
+}
