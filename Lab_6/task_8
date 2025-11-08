@@ -1,0 +1,132 @@
+package Lab7;
+import java.util.Scanner;
+
+public class Main{
+    public static void main (String args[]) {
+        System.out.println("1: Binary\n2: Decimal\n3: Hexadecimal");
+        Scanner scan = new Scanner(System.in);
+        int prog = scan.nextInt();
+        scan.nextLine();
+        String n = scan.nextLine();
+        if (prog == 1){
+            int dec = 0;
+            for (int i = 0; i < n.length(); i++){
+                char c = n.charAt(n.length() - 1 - i);
+                dec += Character.getNumericValue(c) * Math.pow(2, i);
+            }
+            System.out.println("Decimal: " + dec);
+            String hex = "";
+            int a;
+            String a_s;
+            while (dec > 0){
+                a = dec % 16;
+                if (a == 10) {
+                    hex = "A" + hex;
+                }
+                else if (a == 11){
+                    hex = "B" + hex;
+                }
+                else if (a == 12){
+                    hex = "C" + hex;
+                }
+                else if (a == 13){
+                    hex = "D" + hex;
+                }
+                else if (a == 14){
+                    hex = "E" + hex;
+                }
+                else if (a == 15){
+                    hex = "F" + hex;
+                }
+                else{
+                    a_s = a + "";
+                    hex = a_s + hex;
+                }
+                dec = dec / 16;
+
+            }
+            System.out.println("Hexadecimal: " + hex);
+        }
+        if (prog == 2){
+            int dec = Integer.parseInt(n);
+            int dec2 = dec;
+            String dv = "";
+            int a;
+            String a_s;
+            while (dec2 > 0){
+                a = dec2 % 2;
+                a_s = (a + "");
+                dv = a_s + dv;
+                dec2 = dec2 / 2;
+            }
+            System.out.println("Binary: " + dv);
+            String hex = "";
+            while (dec > 0){
+                a = dec % 16;
+                if (a == 10) {
+                    hex = "A" + hex;
+                }
+                else if (a == 11){
+                    hex = "B" + hex;
+                }
+                else if (a == 12){
+                    hex = "C" + hex;
+                }
+                else if (a == 13){
+                    hex = "D" + hex;
+                }
+                else if (a == 14){
+                    hex = "E" + hex;
+                }
+                else if (a == 15){
+                    hex = "F" + hex;
+                }
+                else{
+                    a_s = a + "";
+                    hex = a_s + hex;
+                }
+                dec = dec / 16;
+
+            }
+            System.out.println("Hexadecimal: " + hex);
+        }
+        if (prog == 3){
+            int dec = 0;
+            for (int i = 0; i < n.length(); i++){
+                char c = n.charAt(n.length() - 1 - i);
+                if (c == 'A') {
+                    dec += 10 * Math.pow(16, i);
+                }
+                else if (c == 'B'){
+                    dec += 11 * Math.pow(16, i);
+                }
+                else if (c == 'C'){
+                    dec += 12 * Math.pow(16, i);
+                }
+                else if (c == 'D'){
+                    dec += 13 * Math.pow(16, i);
+                }
+                else if (c == 'E'){
+                    dec += 14 * Math.pow(16, i);
+                }
+                else if (c == 'F'){
+                    dec += 15 * Math.pow(16, i);
+                }
+                else{
+                    dec += Character.getNumericValue(c) * Math.pow(16, i);
+                }
+            }
+            System.out.println("Decimal: " + dec);
+            String dv = "";
+            int a;
+            String a_s;
+            while (dec > 0){
+                a = dec % 2;
+                a_s = (a + "");
+                dv = a_s + dv;
+                dec = dec / 2;
+            }
+            System.out.println("Binary: " + dv);
+        }
+    }
+}
